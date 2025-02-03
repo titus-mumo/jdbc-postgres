@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.RowMapper;
-
+import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.titus.postgres.dao.BookDao;
@@ -14,6 +14,7 @@ import com.titus.postgres.domain.Book;
 
 import io.micrometer.common.lang.NonNull;
 
+@Repository
 public class BookDaoImpl implements BookDao {
     private final JdbcTemplate jdbcTemplate;
 

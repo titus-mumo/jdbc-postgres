@@ -7,12 +7,14 @@ import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.titus.postgres.dao.AuthorDao;
 import com.titus.postgres.domain.Author;
 
 import io.micrometer.common.lang.NonNull;
 
+@Repository
 public class AuthorDaoImpl implements AuthorDao {
     private final JdbcTemplate jdbcTemplate;
 

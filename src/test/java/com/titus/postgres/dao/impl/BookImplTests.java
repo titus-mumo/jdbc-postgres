@@ -10,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.titus.postgres.TestDataUtil;
 import com.titus.postgres.domain.Book;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,11 +25,7 @@ public class BookImplTests {
 
     @Test
     public void testThatCreateBookGeneratesCorrectSql() {
-        Book book = Book.builder()
-                .isbn("43FSW44DEF")
-                .title("Just a book")
-                .authorId(1L)
-                .build();
+        Book book = TestDataUtil.createTestBook();
 
         underTest.create(book);
 

@@ -46,13 +46,21 @@ public class AuthorDaoImplIntegrationTests {
         underTest.create(author2);
         underTest.create(author3);
         List<Author> result = underTest.find();
-        assertThat(result).hasSize(3).containsExactly(author1, author2, author3);
+        assertThat(result)
+                .hasSize(3)
+                .containsExactly(author1, author2, author3);
         // The test below fails meaning that author4 was not created
         // assertThat(result).contains(author4);
     }
 
     @Test
-    public void testThatFindGeneratesCorrectSql() {
-
+    public void testThatAuthorCanBeUpdated() {
+        Author author = TestDataUtil.createTestAuthorA();
+        underTest.create(author);
+        underTest.update("Titus", author);
+        Optional<Author> result = underTest.findOne(author.getId());
+        assertThat(result).isPresent();
+        assertThat(result.get().getName()).isEqualTo("Titus");
     }
-}
+
+};
